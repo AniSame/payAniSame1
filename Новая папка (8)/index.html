@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <style>
+        body { 
+            text-align: center; 
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #game-container {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            width: 300px;
+        }
+        #click-button {
+            font-size: 20px;
+            padding: 15px 30px;
+            cursor: pointer;
+            border: none;
+            background: #ff5722;
+            color: white;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        #click-button:hover {
+            background: #e64a19;
+        }
+        #adsterra {
+            margin-top: 20px;
+            padding: 10px;
+            background: #333;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click as fast as you can!</h1>
+    <div id="game-container">
+        <button id="click-button">Click Me!</button>
+        <p>Time Left: <span id="timer">15</span> sec</p>
+        <p>Clicks: <span id="score">0</span></p>
+    </div>
+    
+    <!-- Adsterra Ad (Replace with actual code) -->
+    <div id="adsterra" style="display:none;">ADSTERAA AD CODE HERE</div>
+    
+    <script>
+        let timeLeft = 15;
+        let score = 0;
+        let gameActive = false;
+        const button = document.getElementById("click-button");
+        const timerDisplay = document.getElementById("timer");
+        const scoreDisplay = document.getElementById("score");
+        const adContainer = document.getElementById("adsterra");
+        
+        button.addEventListener("click", () => {
+            if (!gameActive) return;
+            score++;
+            scoreDisplay.textContent = score;
+        });
+        
+        function startGame() {
+            gameActive = true;
+            let countdown = setInterval(() => {
+                timeLeft--;
+                timerDisplay.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    gameActive = false;
+                    showAd();
+                }
+            }, 1000);
+        }
+        
+        function showAd() {
+            adContainer.style.display = "block";
+            setTimeout(() => { adContainer.style.display = "none"; startGame(); }, 5000);
+        }
+        
+        startGame();
+    </script>
+    
+    <!-- PopAds Ad Script (Replace with actual code) -->
+    <script> /* POPADS CODE HERE */ </script>
+</body>
+</html>
